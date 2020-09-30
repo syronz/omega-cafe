@@ -1,0 +1,12 @@
+{
+  "method":"put",
+  "url":"_URL_/users/2",
+  "authorization":"Bearer _TOKEN_",
+  "payload": {
+    "role_id":1,
+    "username2": "_RANDOM_NAME_",
+    "username": "super",
+    "password": "1234567890",
+    "lang":"ku"
+  }
+}

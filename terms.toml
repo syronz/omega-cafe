@@ -1,0 +1,290 @@
+# corerr/terms.err.go -------------------------------------------------------------------
+["internal server error"]
+en = 'internal server error'
+ku = 'halay server'
+ar = 'internal server error'
+
+["route not found"]
+en = 'route not found'
+ku = 'route booni nie'
+ar = 'al route la moujood'
+
+[unauthorized]
+en = 'unauthorized'
+ku = 'daxl naboo'
+ar = 'unauthorized'
+
+["please report error to the programmer"]
+en = 'please report error to the programmer'
+ku = 'tkaya programmeraka agadar kanawa'
+ar = 'please report error to the programmer'
+
+["record %v:%v not found in %v"]
+en = 'record %v:%v not found in %v'
+ku = 'recordi %v:%v booni nie la %v'
+ar = 'la moujood %v:%v not found in %v'
+
+["record not found"]
+en = 'record not found'
+ku = 'recordaka booni nie'
+ar = 'record not found'
+
+["%v is not valid"]
+en = '%v is not valid'
+ku = '%v halaya'
+ar = '%v is not valid'
+
+["bind failed"]
+en = 'bind failed'
+ku = 'data qabul nakre'
+ar = 'bind failed'
+
+["validation failed"]
+en = 'validation failed'
+ku = 'validation shkasti hena'
+ar = 'validation failed'
+
+["%v is required"]
+en = '%v is required'
+ku = '%v pewista'
+ar = '%v is required'
+
+["minimum accepted character for %v is %v"]
+en = 'minimum accepted character for %v is %v'
+ku = '%v abe ba lani kam %v pit be'
+ar = 'minimum accepted character for %v is %v'
+
+["maximum accepted character for %v is %v"]
+en = 'maximum accepted character for %v is %v'
+ku = '%v ziater la %v pit warnagre'
+ar = 'maximum accepted character for %v is %v'
+
+["accepted value for %v are: [%v]"]
+en = 'accepted value for %v are: [%v]'
+ku = 'datay qabul kraw bo %v awanan: [%v]'
+ar = 'accepted value for %v are: [%v]'
+
+["duplicate happened"]
+en = 'duplicate happened'
+ku = 'peshtr daxl krawa'
+ar = 'duplication happened'
+
+["some %v related to this %v so it is not %v"]
+en = 'some %v related to this %v so it is not %v'
+ku = 'bashek la %v rabtian haya bam %va boya %v nakre'
+ar = 'some %v related to this %v so it is not %v'
+
+["error because of foreign key"]
+en = 'error because of external data'
+ku = 'hala ba hoy datay darawa'
+ar = 'error because of external data'
+
+["%v with value %v already exists"]
+en = '%v with value %v already exists'
+ku = '%[2]v peshtr daxl krawa wak %[1]v'
+ar = '%v with value %v already exists'
+
+["%v is already exist"]
+en = '%v is already exist'
+ku = '%v peshtr daxl krawa'
+ar = '%v is already exist'
+
+["error in binding %v"]
+en = 'error in binding %v'
+ku = 'hala la wargrtni data bo %v'
+ar = 'error in binding %v'
+
+["invalid ID"]
+en = 'invalid ID'
+ku = 'ideka halaya'
+ar = 'invalid ID'
+
+["invalid %v for %v"]
+en = 'invalid %v for %v'
+ku = 'am %vya bo %v qabul nakre'
+ar = 'invalid %v for %v'
+
+["you don't have permission"]
+en = '''you don't have permission'''
+ku = 'regapedraw nie'
+ar = '''you don't have permission'''
+
+["token is required"]
+en = 'token is required'
+ku = 'token pewista'
+ar = 'al token zaroor'
+
+["token is not valid"]
+en = 'token is not valid'
+ku = 'tokenaka halaya'
+ar = 'token is not valid'
+
+["token is expired"]
+en = 'token is expired'
+ku = 'tokenaka basarcho'
+ar = 'token is expired'
+
+["%v not exist"]
+en = '%v not exist'
+ku = '%v booni nie'
+ar = '%v not exist'
+
+# corterm/terms.go ----------------------------------------------------------------------
+[username]
+en = 'username'
+ku = 'nawibakarhenar'
+ar = 'username'
+
+[password]
+en = 'password'
+ku = 'password'
+ar = 'password'
+
+[resources]
+en = 'resources'
+ku = 'bashakan'
+ar = 'resources'
+
+[name]
+en = 'name'
+ku = 'naw'
+ar = 'name'
+
+[role]
+en = 'role'
+ku = 'ark'
+ar = 'role'
+
+[roles]
+en = 'roles'
+ku = 'arkakan'
+ar = 'roles'
+
+[language]
+en = 'language'
+ku = 'zman'
+ar = 'language'
+
+[email]
+en = 'email'
+ku = 'email'
+ar = 'email'
+
+[value]
+en = 'value'
+ku = 'value'
+ar = 'value'
+
+[ID]
+en = 'ID'
+ku = 'ID'
+ar = 'ID'
+
+[description]
+en = 'description'
+ku = 'tebini'
+ar = 'description'
+
+[created]
+en = 'created'
+ku = 'drwst'
+ar = 'created'
+
+[updated]
+en = 'updated'
+ku = 'opdate'
+ar = 'updated'
+
+[deleted]
+en = 'deleted'
+ku = 'delete'
+ar = 'deleted'
+
+[list]
+en = 'list'
+ku = 'list'
+ar = 'list'
+
+[fields]
+en = 'fields'
+ku = 'fieldakan'
+ar = 'fields'
+
+["%v created successfully"]
+en = '%v created successfully'
+ku = '%v ba sarkawtooyi drwst kra'
+ar = '%v alcreated naam'
+
+["%v updated successfully"]
+en = '%v updated successfully'
+ku = '%v ba sarkawtuyi update boo'
+ar = '%v updated successfully'
+
+["%v deleted successfully"]
+en = '%v deleted successfully'
+ku = '%v ba sarkawtuyi delete boo'
+ar = '%v deleted successfully'
+
+["list of %v"]
+en = 'list of %v'
+ku = 'listi %v'
+ar = 'list of %v'
+
+["temporary token"]
+en = 'temporary token'
+ku = 'temporary token'
+ar = 'temporary token'
+
+["%v info"]
+en = '%v info'
+ku = 'maloomati %v'
+ar = '%v info'
+
+
+# base/message/baserr/terms.err.go ------------------------------------------------------
+["username or password is wrong"]
+en = 'username or password is wrong'
+ku = 'username yan passwordakat halaya'
+ar = 'username or password is wrong'
+
+# base/message/basterm/terms.msg.go -----------------------------------------------------
+[user]
+en = 'user'
+ku = 'bakar-henar'
+ar = 'user'
+
+[users]
+en = 'users'
+ku = 'bakar-henarakan'
+ar = 'users'
+
+[setting]
+en = 'setting'
+ku = 'rekxstn'
+ar = 'setting'
+
+[settings]
+en = 'settings'
+ku = 'rekxstnakan'
+ar = 'settings'
+
+["user loged in successfully"]
+en = 'user loged in successfully'
+ku = 'user ba sarkawtooyi daxl boo'
+ar = 'user loged in successfully'
+
+["username and password"]
+en = 'username and password'
+ku = 'username w password'
+ar = 'username and password'
+
+# pkg/filter/parser.go ------------------------------------------------------------------
+["column %v not not exist"]
+en = 'column %v not not exist'
+ku = 'stuni %v booni nie'
+ar = 'column %v not not exist'
+
+["filter is not valid"]
+en = 'filter is not valid'
+ku = 'filter halaya'
+ar = 'filter is not valid'

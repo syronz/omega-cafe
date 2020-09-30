@@ -1,0 +1,12 @@
+{
+  "method":"post",
+  "url":"_URL_/users",
+  "authorization":"Bearer _TOKEN_",
+  "payload": {
+    "role_id":1,
+    "username": "_RANDOM_NAME_",
+    "password": "1234567890",
+    "lang":"ku",
+    "email":"sabina.diako@gmail.com"
+  }
+}
