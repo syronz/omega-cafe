@@ -4,6 +4,7 @@ import (
 	"omega/domain/base"
 	"omega/domain/base/basmodel"
 	"omega/domain/base/basrepo"
+	"omega/domain/cafe"
 	"omega/domain/service"
 	"omega/internal/core"
 	"omega/internal/types"
@@ -26,7 +27,8 @@ func InsertRoles(engine *core.Engine) {
 				base.UserWrite, base.UserRead, base.UserExcel,
 				base.ActivitySelf, base.ActivityAll,
 				base.RoleRead, base.RoleWrite, base.RoleExcel,
-				// base.Ping,
+				cafe.FoodRead, cafe.FoodWrite, cafe.FoodExcel,
+				cafe.OrderRead, cafe.OrderWrite, cafe.OrderExcel,
 			}),
 			Description: "admin has all privileges - do not edit",
 		},

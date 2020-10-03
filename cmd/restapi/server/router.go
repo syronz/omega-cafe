@@ -4,6 +4,7 @@ import (
 	"net/http"
 	"omega/domain/base"
 	"omega/domain/base/basmid"
+	"omega/domain/cafe"
 	"omega/internal/core"
 
 	"github.com/gin-gonic/gin"
@@ -20,6 +21,12 @@ func Route(rg gin.RouterGroup, engine *core.Engine) {
 
 	// Html Domain
 	htmErrDescAPI := initErrDescAPI(engine)
+
+	// Cafe Domain
+	cafFoodAPI := initFoodAPI(engine)
+	cafOrderAPI := initOrderAPI(engine)
+	cafOrderFoodAPI := initOrderFoodAPI(engine)
+
 	rg.GET("/error-list", htmErrDescAPI.List)
 	rg.StaticFS("/public", http.Dir("public"))
 
@@ -54,5 +61,27 @@ func Route(rg gin.RouterGroup, engine *core.Engine) {
 	rg.GET("/excel/users", access.Check(base.UserExcel), basUserAPI.Excel)
 
 	rg.GET("/activities", access.Check(base.ActivityAll), basActivityAPI.List)
+
+	// Cafe Domain
+	rg.GET("/foods", access.Check(cafe.FoodRead), cafFoodAPI.List)
+	rg.GET("/foods/:foodID", access.Check(cafe.FoodRead), cafFoodAPI.FindByID)
+	rg.POST("/foods", access.Check(cafe.FoodWrite), cafFoodAPI.Create)
+	rg.PUT("/foods/:foodID", access.Check(cafe.FoodWrite), cafFoodAPI.Update)
+	rg.DELETE("/foods/:foodID", access.Check(cafe.FoodWrite), cafFoodAPI.Delete)
+	rg.GET("/excel/foods", access.Check(cafe.FoodExcel), cafFoodAPI.Excel)
+
+	rg.GET("/orders", access.Check(cafe.OrderRead), cafOrderAPI.List)
+	rg.GET("/orders/:orderID", access.Check(cafe.OrderRead), cafOrderAPI.FindByID)
+	rg.POST("/orders", access.Check(cafe.OrderWrite), cafOrderAPI.Create)
+	rg.PUT("/orders/:orderID", access.Check(cafe.OrderWrite), cafOrderAPI.Update)
+	rg.DELETE("/orders/:orderID", access.Check(cafe.OrderWrite), cafOrderAPI.Delete)
+	rg.GET("/excel/orders", access.Check(cafe.OrderExcel), cafOrderAPI.Excel)
+
+	rg.GET("/order-food", access.Check(cafe.OrderRead), cafOrderFoodAPI.List)
+	rg.GET("/order-food/:orderFoodID", access.Check(cafe.OrderRead), cafOrderFoodAPI.FindByID)
+	// rg.POST("/order-food", access.Check(cafe.OrderWrite), cafOrderFoodAPI.Create)
+	rg.PUT("/order-food/:orderFoodID", access.Check(cafe.OrderWrite), cafOrderFoodAPI.Update)
+	rg.DELETE("/order-food/:orderFoodID", access.Check(cafe.OrderWrite), cafOrderFoodAPI.Delete)
+	rg.GET("/excel/order-food", access.Check(cafe.OrderExcel), cafOrderFoodAPI.Excel)
 
 }

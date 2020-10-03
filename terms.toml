@@ -288,3 +288,31 @@ ar = 'column %v not not exist'
 en = 'filter is not valid'
 ku = 'filter halaya'
 ar = 'filter is not valid'
+
+# domain/cafe/message/cafterm/terms.msg.go ----------------------------------------------
+[food]
+en = 'food'
+ku = 'xwardn'
+ar = 'food'
+
+[foods]
+en = 'foods'
+ku = 'xwardnakan'
+ar = 'foods'
+
+[price]
+en = 'price'
+ku = 'nrx'
+ar = 'price'
+
+[order]
+en = 'order'
+ku = 'dawakari'
+ar = 'order'
+
+[oders]
+en = 'oders'
+ku = 'dawakarekan'
+ar = 'oders'
+
+

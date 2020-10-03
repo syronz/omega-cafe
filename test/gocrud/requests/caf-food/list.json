@@ -1,0 +1,13 @@
+{
+  "method":"get",
+	"url":"_URL_/foods?order_by=bas_roles.id&direction=asc&page_size=4&search=1001101000000003",
+	"url":"_URL_/foods",
+	"url":"_URL_/foods?search=6934334&order_by=role.id",
+	"url":"_URL_/foods?search=select%20name",
+	"url":"_URL_/foods?filter='name2[eq];%20select%20name%20from%20bas_users'",
+	"url":"_URL_/foods?order_by=bas_roles.id&direction=asc&page_size=4",
+	"url":"_URL_/foods?select=bas_roles.name,bas_roles.id&lang=ku",
+	"url":"_URL_/foods?filter=caf_foods.status[eq]'active'&order_by=caf_foods.name&direction=asc&page_size=10000",
+	"authorization":"Bearer _TOKEN_",
+	"payload": {}
+}

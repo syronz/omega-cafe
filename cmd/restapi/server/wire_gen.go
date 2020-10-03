@@ -8,6 +8,8 @@ package server
 import (
 	"omega/domain/base/basapi"
 	"omega/domain/base/basrepo"
+	"omega/domain/cafe/cafapi"
+	"omega/domain/cafe/cafrepo"
 	"omega/domain/html/htmapi"
 	"omega/domain/service"
 	"omega/internal/core"
@@ -52,4 +54,25 @@ func initActivityAPI(engine *core.Engine) basapi.ActivityAPI {
 func initErrDescAPI(e *core.Engine) htmapi.ErrDescAPI {
 	errDescAPI := htmapi.GenErrDescAPI(e)
 	return errDescAPI
+}
+
+func initFoodAPI(e *core.Engine) cafapi.FoodAPI {
+	foodRepo := cafrepo.ProvideFoodRepo(e)
+	basFoodServ := service.ProvideBasFoodService(foodRepo)
+	foodAPI := cafapi.ProvideFoodAPI(basFoodServ)
+	return foodAPI
+}
+
+func initOrderAPI(e *core.Engine) cafapi.OrderAPI {
+	orderRepo := cafrepo.ProvideOrderRepo(e)
+	basOrderServ := service.ProvideBasOrderService(orderRepo)
+	orderAPI := cafapi.ProvideOrderAPI(basOrderServ)
+	return orderAPI
+}
+
+func initOrderFoodAPI(e *core.Engine) cafapi.OrderFoodAPI {
+	orderFoodRepo := cafrepo.ProvideOrderFoodRepo(e)
+	basOrderFoodServ := service.ProvideBasOrderFoodService(orderFoodRepo)
+	orderFoodAPI := cafapi.ProvideOrderFoodAPI(basOrderFoodServ)
+	return orderFoodAPI
 }

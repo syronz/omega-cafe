@@ -5,6 +5,8 @@ package server
 import (
 	"omega/domain/base/basapi"
 	"omega/domain/base/basrepo"
+	"omega/domain/cafe/cafapi"
+	"omega/domain/cafe/cafrepo"
 	"omega/domain/html/htmapi"
 	"omega/domain/service"
 
@@ -45,4 +47,23 @@ func initActivityAPI(engine *core.Engine) basapi.ActivityAPI {
 func initErrDescAPI(e *core.Engine) htmapi.ErrDescAPI {
 	wire.Build(htmapi.GenErrDescAPI)
 	return htmapi.ErrDescAPI{}
+}
+
+// Cafe domain
+func initFoodAPI(e *core.Engine) cafapi.FoodAPI {
+	wire.Build(cafrepo.ProvideFoodRepo, service.ProvideBasFoodService,
+		cafapi.ProvideFoodAPI)
+	return cafapi.FoodAPI{}
+}
+
+func initOrderAPI(e *core.Engine) cafapi.OrderAPI {
+	wire.Build(cafrepo.ProvideOrderRepo, service.ProvideBasOrderService,
+		cafapi.ProvideOrderAPI)
+	return cafapi.OrderAPI{}
+}
+
+func initOrderFoodAPI(e *core.Engine) cafapi.OrderFoodAPI {
+	wire.Build(cafrepo.ProvideOrderFoodRepo, service.ProvideBasOrderFoodService,
+		cafapi.ProvideOrderFoodAPI)
+	return cafapi.OrderFoodAPI{}
 }

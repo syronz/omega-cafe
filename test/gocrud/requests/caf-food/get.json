@@ -1,0 +1,9 @@
+{
+  "method":"get",
+	"url":"_URL_/foods/1001101000000017?lang=ar",
+	"url":"_URL_/foods/string",
+	"url":"_URL_/foods/1001101000000017",
+	"url":"_URL_/foods/3",
+	"authorization":"Bearer _TOKEN_",
+	"payload": {}
+}

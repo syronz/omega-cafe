@@ -17,6 +17,7 @@ type Food struct {
 	types.GormCol
 	Name        string `gorm:"not null;unique" json:"name,omitempty"`
 	Price       int    `json:"price,omitempty"`
+	Status      string `json:"status,omitempty"`
 	Description string `json:"description"`
 }
 
@@ -34,7 +35,7 @@ func (p *Food) Validate(act coract.Action) (err error) {
 
 		if p.Price == 0 {
 			err = limberr.AddInvalidParam(err, "price",
-				corerr.VisRequired, dict.R("food"))
+				corerr.VisRequired, dict.R("price"))
 		}
 
 		if len(p.Description) > 255 {

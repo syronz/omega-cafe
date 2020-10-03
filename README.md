@@ -38,6 +38,7 @@ plog.ServerLog.Panic(err.Error())
 - [x] apilogger should be moved to other place
 - [ ] implement refresh token
 - [ ] common method for repo based on inheritance
+- [ ] do not let to add space instead of character for names
 
 # Requesed RMS part
 1. inventory import should lock the price for agent
@@ -59,5 +60,7 @@ plog.ServerLog.Panic(err.Error())
 8. unique serial for serial base items
 9. special process for updating the phone
 10. enable static ip
+
+
 
 

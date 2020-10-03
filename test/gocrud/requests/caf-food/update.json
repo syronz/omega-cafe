@@ -1,0 +1,10 @@
+{
+  "method":"put",
+	"url":"_URL_/foods/4",
+	"authorization":"Bearer _TOKEN_",
+	"payload": {
+		"name": "_RANDOM_NAME_ _RANDOM_NUMBER_",
+		"price": 1500,
+		"description": "this is edidted"
+	}
+}
