@@ -7,6 +7,7 @@ import (
 	"omega/internal/types"
 	"omega/pkg/dict"
 	"omega/pkg/limberr"
+	"time"
 )
 
 const (
@@ -16,10 +17,12 @@ const (
 type Order struct {
 	types.GormCol
 	Customer    string      `json:"customer,omitempty"`
+	Table       string      `json:"table,omitempty"`
 	Phone       string      `json:"phone,omitempty"`
 	Total       int         `json:"total,omitempty"`
 	Discount    int         `json:"discount,omitempty"`
-	Description string      `json:"description"`
+	Description string      `json:"description,omitempty"`
+	PaidAt      time.Time   `json:"paid_at,omitempty"`
 	Foods       []OrderFood `sql:"-" json:"foods"`
 }
 
