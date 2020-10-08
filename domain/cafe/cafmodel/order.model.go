@@ -16,13 +16,14 @@ const (
 
 type Order struct {
 	types.GormCol
+	CreatedBy   types.RowID `json:"created_by,omitempty"`
 	Customer    string      `json:"customer,omitempty"`
 	Table       string      `json:"table,omitempty"`
 	Phone       string      `json:"phone,omitempty"`
 	Total       int         `json:"total,omitempty"`
 	Discount    int         `json:"discount,omitempty"`
 	Description string      `json:"description,omitempty"`
-	PaidAt      time.Time   `json:"paid_at,omitempty"`
+	PaidAt      *time.Time  `json:"paid_at,omitempty"`
 	Foods       []OrderFood `sql:"-" json:"foods"`
 }
 

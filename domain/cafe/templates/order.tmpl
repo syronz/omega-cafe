@@ -1,0 +1,95 @@
+<html>
+	<h1>
+		{{ .title }}
+	</h1>
+	<div class="container" *ngIf="orderInfo">
+		<div class="invoice">
+			<div class="header">
+				<div class="logo">
+					<img src="assets/images/logos/logo2.png" >
+				</div>
+				<p class="alignCenter shopName">{{ .companyInfo.name }}</p>
+				<div class="hr"></div>
+				<div class="infoContainer">
+					<div>
+						<p>{{ .order.customer }}</p>
+						<p>{{ .order.phone }}</p>
+						<p>{{ .order.address }}</p>
+					</div>
+
+					<div class="alignRight">
+						<p>#{{ .order.id }}</p>
+						<p>{{ .order.created_at }}</p>
+						<p>{{ .dict.Agent }}{{ .order.created_by }}</p>
+					</div>
+				</div> <!-- header.infoContainer -->
+				<div class="hr"></div>
+			</div> <!-- header -->
+
+				<table >
+					<thead>
+						<tr>
+							<th> {{ .dict.Food }}</th>
+							<th> {{ .dict.Qty }}</th>
+							<th> {{ .dict.Price }}</th>
+							<th> {{ .dict.Total }}</th>
+						</tr>
+					</thead>
+					{{range .foods}}
+						<tr>
+							<td> 
+								{{ .food }}
+							</td>
+							<td> 
+								{{ .qty }}
+							</td>
+							<td class="alignRight"> 
+								{{ .price }}
+							</td>
+							<td class="alignRight"> 
+								{{ .total }}
+							</td>
+						</tr>
+					{{end}}
+					<tfoot>
+						<tr>
+							<td class="subTotal" colspan="3"> {{ .dict.SubTotal }} </td>
+							<td class="subTotal alignRight"> 
+								{{ -1 * invoice.total | number: fraction }} 
+							</td>
+						</tr>
+						<tr>
+							<td class="subTotal" colspan="3"> {{ .dict.Discount }} </td>
+							<td class="subTotal alignRight"> 
+								{{ -1 * invoice.discount_amount | number: fraction }} 
+							</td>
+						</tr>
+						<tr>
+							<td class="subTotal" colspan="3"> {{ .dict.GrandTotal }} </td>
+							<td class="subTotal alignRight"> 
+								{{ -1 * ( invoice.total - invoice.discount_amount) | number: fraction }} 
+							</td>
+						</tr>
+					</tfoot>
+				</table>
+				<div class="invoiceDetail" *ngIf="invoice.type == 'sell-serial'">
+					{{ invoice.detail }} 
+				</div>
+				<div class="orderTotal alignRight">
+					<h2> 
+						{{ 'Total ' }} 
+						<span class="square">
+							{{ -1 * orderInfo.order.total | number:fraction }} IQD
+						</span>
+					</h2>
+				</div>
+				<div class="hr"></div>
+				<div class="thanxPart">
+					<p> {{ 'Thank You' | t }} </p>
+					<p> {{ orderInfo.branch.phone }}</p>
+					<p> {{ orderInfo.branch.address }} </p>
+					<p> www.erp14.com </p>
+				</div>
+		</div>
+	</div>
+</html>

@@ -1,23 +1,23 @@
 {
-  "method":"post",
+	"method":"post",
 	"url":"_URL_/orders",
 	"authorization":"Bearer _TOKEN_",
 	"payload": {
 		"Customer": "Diako ",
 		"phone": "07505149171",
 		"description": "_RANDOM_NUMBER_",
-    "discount": 100,
-    "foods": [
-      {
-        "food_id": 1,
-        "qty": 10,
-        "description": "spicy"
-      },
-      {
-        "food_id": 2,
-        "qty": 3,
-        "description": ""
-      }
-    ]
+		"discount": 100,
+		"foods": [
+			{
+				"food_id": 1,
+				"qty": 10,
+				"description": "spicy"
+			},
+			{
+				"food_id": 2,
+				"qty": 3,
+				"description": ""
+			}
+		]
 	}
 }

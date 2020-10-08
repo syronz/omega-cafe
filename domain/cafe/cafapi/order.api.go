@@ -178,3 +178,53 @@ func (p *OrderAPI) Excel(c *gin.Context) {
 	c.Data(http.StatusOK, "application/octet-stream", buffer.Bytes())
 
 }
+
+// Print generate html to be printed
+func (p *OrderAPI) Print(c *gin.Context) {
+	// resp := response.New(p.Engine, c, cafe.Domain)
+
+	// resp.Status(http.StatusOK).
+	// 	MessageT(corterm.VInfo, cafterm.Order).
+	// 	JSON(gin.H{"ok": "no"})
+
+	data := gin.H{
+		"title": "hello diako",
+		"companyInfo": gin.H{
+			"name": "footar",
+		},
+		"order": gin.H{
+			"customer":   "Diako Amir",
+			"phone":      "",
+			"address":    "",
+			"id":         323,
+			"created_at": "2020-10-15 13:17:28",
+			"created_by": 16,
+		},
+		"foods": []cafmodel.OrderFood{
+			{
+				Food:  "chicken",
+				Qty:   3,
+				Price: 1000,
+				Total: 3000,
+			},
+			{
+				Food:  "sandwitch",
+				Qty:   1,
+				Price: 1500,
+				Total: 1500,
+			},
+		},
+		"dict": gin.H{
+			"Agent":      "Agent",
+			"Food":       "Food",
+			"Qty":        "Qty",
+			"Price":      "Price",
+			"Total":      "Total",
+			"SubTotal":   "Sub Total",
+			"Discount":   "Discount",
+			"GrandTotal": "Grand Total",
+		},
+	}
+
+	c.HTML(http.StatusOK, "order.tmpl", data)
+}

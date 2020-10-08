@@ -41,7 +41,11 @@ func Start(engine *core.Engine) *gin.Engine {
 	}))
 	r.Use(cormid.APILogger(engine))
 
-	// No Route "Not Found"
+	// set tempaltes path
+	r.LoadHTMLGlob("domain/cafe/templates/*")
+	// r.LoadHTMLFiles("domain/cafe/templates/index.tmpl", "domain/cafe/templates/order.tmpl")
+
+	// no route "not found"
 	notFoundRoute(r, engine)
 
 	rg := r.Group("/api/restapi/v1")

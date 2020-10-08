@@ -76,6 +76,7 @@ func Route(rg gin.RouterGroup, engine *core.Engine) {
 	rg.PUT("/orders/:orderID", access.Check(cafe.OrderWrite), cafOrderAPI.Update)
 	rg.DELETE("/orders/:orderID", access.Check(cafe.OrderWrite), cafOrderAPI.Delete)
 	rg.GET("/excel/orders", access.Check(cafe.OrderExcel), cafOrderAPI.Excel)
+	rg.GET("/orders/:orderID/print", access.Check(cafe.OrderRead), cafOrderAPI.Print)
 
 	rg.GET("/order-food", access.Check(cafe.OrderRead), cafOrderFoodAPI.List)
 	rg.GET("/order-food/:orderFoodID", access.Check(cafe.OrderRead), cafOrderFoodAPI.FindByID)
