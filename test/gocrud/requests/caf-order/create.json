@@ -3,7 +3,7 @@
 	"url":"_URL_/orders",
 	"authorization":"Bearer _TOKEN_",
 	"payload": {
-		"Customer": "Diako ",
+		"customer": "Diako ",
 		"phone": "07505149171",
 		"description": "_RANDOM_NUMBER_",
 		"discount": 100,
@@ -14,7 +14,7 @@
 				"description": "spicy"
 			},
 			{
-				"food_id": 2,
+				"food_id": 5,
 				"qty": 3,
 				"description": ""
 			}

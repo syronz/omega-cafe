@@ -6,6 +6,7 @@ import (
 	"omega/domain/cafe/cafmodel"
 	"omega/domain/cafe/message/cafterm"
 	"omega/domain/service"
+	"omega/internal/consts"
 	"omega/internal/core"
 	"omega/internal/core/corterm"
 	"omega/internal/response"
@@ -64,15 +65,32 @@ func (p *OrderAPI) List(c *gin.Context) {
 		JSON(data)
 }
 
+func (p *OrderAPI) MonthlyReport(c *gin.Context) {
+	resp := response.New(p.Engine, c, cafe.Domain)
+
+	data, err := p.Service.MonthlyReport()
+	if err != nil {
+		resp.Error(err).JSON()
+		return
+	}
+
+	resp.Record(cafe.MonthlyReport)
+	resp.Status(http.StatusOK).
+		MessageT(corterm.ListOfV, cafterm.Orders).
+		JSON(data)
+}
+
 // Create order
 func (p *OrderAPI) Create(c *gin.Context) {
-	resp := response.New(p.Engine, c, cafe.Domain)
+	resp, params := response.NewParam(p.Engine, c, cafmodel.OrderTable, cafe.Domain)
 	var order, createdOrder cafmodel.Order
 	var err error
 
 	if err = resp.Bind(&order, "E1588259", cafe.Domain, cafterm.Order); err != nil {
 		return
 	}
+
+	order.CreatedBy = params.UserID
 
 	if createdOrder, err = p.Service.Create(order); err != nil {
 		resp.Error(err).JSON()
@@ -181,39 +199,37 @@ func (p *OrderAPI) Excel(c *gin.Context) {
 
 // Print generate html to be printed
 func (p *OrderAPI) Print(c *gin.Context) {
-	// resp := response.New(p.Engine, c, cafe.Domain)
+	resp := response.New(p.Engine, c, cafe.Domain)
+	var err error
+	var order cafmodel.Order
 
-	// resp.Status(http.StatusOK).
-	// 	MessageT(corterm.VInfo, cafterm.Order).
-	// 	JSON(gin.H{"ok": "no"})
+	if order.ID, err = resp.GetRowID(c.Param("orderID"), "E1553982", cafterm.Order); err != nil {
+		return
+	}
+
+	if order, err = p.Service.FindByID(order.ID); err != nil {
+		resp.Error(err).JSON()
+		return
+	}
 
 	data := gin.H{
-		"title": "hello diako",
 		"companyInfo": gin.H{
-			"name": "footar",
+			"name":    "footar",
+			"phone":   "07505149171",
+			"address": "slemany",
 		},
 		"order": gin.H{
-			"customer":   "Diako Amir",
-			"phone":      "",
-			"address":    "",
-			"id":         323,
-			"created_at": "2020-10-15 13:17:28",
-			"created_by": 16,
+			"customer":    order.Customer,
+			"phone":       order.Phone,
+			"id":          order.ID,
+			"created_at":  order.CreatedAt.Format(consts.DateTimeLayout),
+			"created_by":  order.CreatedBy,
+			"total":       order.Total,
+			"discount":    order.Discount,
+			"net_total":   order.Total - order.Discount,
+			"description": order.Description,
 		},
-		"foods": []cafmodel.OrderFood{
-			{
-				Food:  "chicken",
-				Qty:   3,
-				Price: 1000,
-				Total: 3000,
-			},
-			{
-				Food:  "sandwitch",
-				Qty:   1,
-				Price: 1500,
-				Total: 1500,
-			},
-		},
+		"foods": order.Foods,
 		"dict": gin.H{
 			"Agent":      "Agent",
 			"Food":       "Food",
@@ -223,6 +239,7 @@ func (p *OrderAPI) Print(c *gin.Context) {
 			"SubTotal":   "Sub Total",
 			"Discount":   "Discount",
 			"GrandTotal": "Grand Total",
+			"ThankYou":   "Thank You",
 		},
 	}
 

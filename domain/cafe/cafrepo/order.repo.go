@@ -65,6 +65,15 @@ func (p *OrderRepo) List(params param.Param) (orders []cafmodel.Order, err error
 	return
 }
 
+func (p *OrderRepo) MonthlyReport() (orderMonthly []cafmodel.OrderMonthly, err error) {
+	query := `SELECT substr(created_at,1,7) as month,sum(total) as total, sum(discount) as discount, sum(total) - sum(discount) as sub_total FROM omega.caf_orders group by substr(created_at,1,7) ORDER BY month`
+	err = p.Engine.DB.Table(cafmodel.OrderTable).Raw(query).Scan(&orderMonthly).Error
+
+	err = p.dbError(err, "E1562890", cafmodel.Order{}, corterm.List)
+
+	return
+}
+
 // Count of orders, mainly calls with List
 func (p *OrderRepo) Count(params param.Param) (count uint64, err error) {
 	var whereStr string

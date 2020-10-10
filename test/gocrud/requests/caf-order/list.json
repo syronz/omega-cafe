@@ -1,13 +1,13 @@
 {
   "method":"get",
 	"url":"_URL_/orders?order_by=bas_roles.id&direction=asc&page_size=4&search=1001101000000003",
-	"url":"_URL_/orders",
 	"url":"_URL_/orders?search=6934334&order_by=role.id",
 	"url":"_URL_/orders?search=select%20name",
 	"url":"_URL_/orders?filter='name2[eq];%20select%20name%20from%20bas_users'",
-	"url":"_URL_/orders?filter=bas_roles2.name[eq]'admin'",
 	"url":"_URL_/orders?order_by=bas_roles.id&direction=asc&page_size=4",
 	"url":"_URL_/orders?select=bas_roles.name,bas_roles.id&lang=ku",
+	"url":"_URL_/orders",
+	"url":"_URL_/orders?direction=asc&page_size=10000&filter=caf_orders.created_at[gte]'2020-10-07%2000:00:00'[and]caf_orders.created_at[lte]'2020-10-10%2023:59:59'",
 	"authorization":"Bearer _TOKEN_",
 	"payload": {}
 }

@@ -21,7 +21,7 @@ type OrderFood struct {
 	Qty         int         `json:"qty,omitempty"`
 	Total       int         `json:"total,omitempty"`
 	Description string      `json:"description"`
-	Food        string      `sql:"-" json:"food"`
+	Food        string      `sql:"-" json:"food" table:"caf_foods.name as food"`
 }
 
 // Validate check the type of fields

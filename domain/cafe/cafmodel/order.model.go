@@ -24,7 +24,7 @@ type Order struct {
 	Discount    int         `json:"discount,omitempty"`
 	Description string      `json:"description,omitempty"`
 	PaidAt      *time.Time  `json:"paid_at,omitempty"`
-	Foods       []OrderFood `sql:"-" json:"foods"`
+	Foods       []OrderFood `sql:"-" json:"foods" table:"-"`
 }
 
 // Validate check the type of fields

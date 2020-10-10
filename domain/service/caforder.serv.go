@@ -33,6 +33,21 @@ func (p *BasOrderServ) FindByID(id types.RowID) (order cafmodel.Order, err error
 		return
 	}
 
+	orderFoodServ := ProvideBasOrderFoodService(cafrepo.ProvideOrderFoodRepo(p.Engine))
+	var params param.Param
+	params.PreCondition = fmt.Sprintf(" order_id = %v ", id)
+	params.Limit = 10000
+	params.Select = "*"
+
+	var foods []cafmodel.OrderFood
+
+	if foods, _, err = orderFoodServ.List(params); err != nil {
+		err = corerr.Tick(err, "E3263291", "can't fetch the order's foods", id)
+		return
+	}
+
+	order.Foods = foods
+
 	return
 }
 
@@ -47,6 +62,16 @@ func (p *BasOrderServ) List(params param.Param) (orders []cafmodel.Order,
 
 	if count, err = p.Repo.Count(params); err != nil {
 		glog.CheckError(err, "error in orders count")
+	}
+
+	return
+}
+
+// MonthlyReport return sum of orders per month
+func (p *BasOrderServ) MonthlyReport() (orderMonthly []cafmodel.OrderMonthly, err error) {
+	if orderMonthly, err = p.Repo.MonthlyReport(); err != nil {
+		glog.CheckError(err, "error in orders list")
+		return
 	}
 
 	return
@@ -80,6 +105,7 @@ func (p *BasOrderServ) Create(order cafmodel.Order) (createdOrder cafmodel.Order
 	}
 
 	foodService := ProvideBasFoodService(cafrepo.ProvideFoodRepo(clonedEngine))
+	var total int
 
 	orderFoodRepo := cafrepo.ProvideOrderFoodRepo(clonedEngine)
 	for _, v := range order.Foods {
@@ -91,11 +117,20 @@ func (p *BasOrderServ) Create(order cafmodel.Order) (createdOrder cafmodel.Order
 			return
 		}
 		v.Price = food.Price
+		v.Total = food.Price * v.Qty
+		total += v.Total
 		if _, err = orderFoodRepo.Create(v); err != nil {
 			err = corerr.Tick(err, "E3278321", "order-food not created", v)
 			clonedEngine.DB.Rollback()
 			return
 		}
+	}
+
+	createdOrder.Total = total
+	if createdOrder, err = orderRepo.Save(createdOrder); err != nil {
+		err = corerr.Tick(err, "E3242980", "total for order not saved")
+		clonedEngine.DB.Rollback()
+		return
 	}
 
 	clonedEngine.DB.Commit()

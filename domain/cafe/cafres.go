@@ -9,7 +9,8 @@ const (
 	FoodWrite types.Resource = "food:write"
 	FoodExcel types.Resource = "food:excel"
 
-	OrderRead  types.Resource = "order:read"
-	OrderWrite types.Resource = "order:write"
-	OrderExcel types.Resource = "order:excel"
+	OrderRead          types.Resource = "order:read"
+	OrderWrite         types.Resource = "order:write"
+	OrderExcel         types.Resource = "order:excel"
+	OrderMonthlyReport types.Resource = "order-monthly:report"
 )

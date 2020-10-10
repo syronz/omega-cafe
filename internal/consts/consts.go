@@ -12,4 +12,7 @@ const (
 
 	// TemporaryTokenDuration = 100 * 100000 //in seconds
 	TemporaryTokenDuration = 10
+
+	// mysql datetime layout
+	DateTimeLayout = "2006-01-02 15:04:05"
 )

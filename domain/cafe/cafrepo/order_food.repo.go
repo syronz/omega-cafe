@@ -54,6 +54,7 @@ func (p *OrderFoodRepo) List(params param.Param) (order_foods []cafmodel.OrderFo
 	}
 
 	err = p.Engine.DB.Table(cafmodel.OrderFoodTable).Select(colsStr).
+		Joins(" inner join caf_foods on caf_foods.id = caf_order_foods.food_id").
 		Where(whereStr).
 		Order(params.Order).
 		Limit(params.Limit).

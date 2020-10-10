@@ -28,7 +28,7 @@ func InsertRoles(engine *core.Engine) {
 				base.ActivitySelf, base.ActivityAll,
 				base.RoleRead, base.RoleWrite, base.RoleExcel,
 				cafe.FoodRead, cafe.FoodWrite, cafe.FoodExcel,
-				cafe.OrderRead, cafe.OrderWrite, cafe.OrderExcel,
+				cafe.OrderRead, cafe.OrderWrite, cafe.OrderExcel, cafe.OrderMonthlyReport,
 			}),
 			Description: "admin has all privileges - do not edit",
 		},
