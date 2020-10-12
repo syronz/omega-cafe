@@ -131,6 +131,14 @@ padding: 2px 4px;
   font-size: 0.8em;
 }
 
+@media print
+{    
+    .no-print, .no-print *
+    {
+        display: none !important;
+    }
+}
+
 </style>
 </head>
 <body>
@@ -138,7 +146,9 @@ padding: 2px 4px;
 <div class="invoice">
 <div class="header">
 <div class="logo">
+<button class="no-print" onclick="printWindow()"> Print </button>
 <h3> {{ .companyInfo.name }} </h3>
+<button class="no-print" onclick="closeWindow()"> Close </button>
 </div>
 <div class="hr"></div>
 <div class="infoContainer">
@@ -226,16 +236,18 @@ padding: 2px 4px;
 </div>
 </div>
 </body>
+<script type="text/javascript">
+window.print();
+
+function closeWindow() {
+  window.close();
+}
+
+function printWindow() {
+  window.print();
+}
+</script>
 </html>
 
-<div class="infoContainer">
-  <div>
-  <p></p>
-  </div>
 
-  <div class="alignRight">
-  <p></p>
-  </div>
-</div> <!-- header.infoContainer -->
-<br>
 
