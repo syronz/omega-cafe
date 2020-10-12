@@ -52,6 +52,15 @@ func (p *BasOrderFoodServ) List(params param.Param) (order_foods []cafmodel.Orde
 	return
 }
 
+func (p *BasOrderFoodServ) FoodConsumeReport(start, end string) (foodQty []cafmodel.FoodQty, err error) {
+	if foodQty, err = p.Repo.FoodConsumeReport(start, end); err != nil {
+		glog.LogError(err, "error in food consume report")
+		return
+	}
+
+	return
+}
+
 // Create a order_food
 func (p *BasOrderFoodServ) Create(order_food cafmodel.OrderFood) (createdOrderFood cafmodel.OrderFood, err error) {
 

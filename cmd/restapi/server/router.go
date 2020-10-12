@@ -85,5 +85,6 @@ func Route(rg gin.RouterGroup, engine *core.Engine) {
 	rg.PUT("/order-food/:orderFoodID", access.Check(cafe.OrderWrite), cafOrderFoodAPI.Update)
 	rg.DELETE("/order-food/:orderFoodID", access.Check(cafe.OrderWrite), cafOrderFoodAPI.Delete)
 	rg.GET("/excel/order-food", access.Check(cafe.OrderExcel), cafOrderFoodAPI.Excel)
+	rg.GET("/reports/food-consume", access.Check(cafe.FoodConsume), cafOrderFoodAPI.FoodConsumeReport)
 
 }

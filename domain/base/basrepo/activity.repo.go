@@ -29,7 +29,8 @@ func (p *ActivityRepo) List(params param.Param) (activities []basmodel.Activity,
 		return
 	}
 
-	err = p.Engine.ActivityDB.Select(columns).
+	err = p.Engine.ActivityDB.Table(basmodel.ActivityTable).
+		Select(columns).
 		Order(params.Order).
 		Limit(params.Limit).
 		Offset(params.Offset).

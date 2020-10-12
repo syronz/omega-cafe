@@ -70,7 +70,7 @@ func (p *BasOrderServ) List(params param.Param) (orders []cafmodel.Order,
 // MonthlyReport return sum of orders per month
 func (p *BasOrderServ) MonthlyReport() (orderMonthly []cafmodel.OrderMonthly, err error) {
 	if orderMonthly, err = p.Repo.MonthlyReport(); err != nil {
-		glog.CheckError(err, "error in orders list")
+		glog.CheckError(err, "error in monthly-report")
 		return
 	}
 

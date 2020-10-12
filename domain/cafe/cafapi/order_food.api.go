@@ -63,6 +63,24 @@ func (p *OrderFoodAPI) List(c *gin.Context) {
 		JSON(data)
 }
 
+func (p *OrderFoodAPI) FoodConsumeReport(c *gin.Context) {
+	resp := response.New(p.Engine, c, cafe.Domain)
+
+	start := c.Query("start")
+	end := c.Query("end")
+
+	data, err := p.Service.FoodConsumeReport(start, end)
+	if err != nil {
+		resp.Error(err).JSON()
+		return
+	}
+
+	resp.Record(cafe.FoodConsumeReport)
+	resp.Status(http.StatusOK).
+		MessageT(corterm.ListOfV, cafterm.Foods).
+		JSON(data)
+}
+
 // Create order_food
 func (p *OrderFoodAPI) Create(c *gin.Context) {
 	resp := response.New(p.Engine, c, cafe.Domain)

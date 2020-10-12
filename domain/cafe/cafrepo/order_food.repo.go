@@ -1,6 +1,7 @@
 package cafrepo
 
 import (
+	"fmt"
 	"omega/domain/cafe/cafmodel"
 	"omega/domain/cafe/message/cafterm"
 	"omega/internal/core"
@@ -62,6 +63,18 @@ func (p *OrderFoodRepo) List(params param.Param) (order_foods []cafmodel.OrderFo
 		Find(&order_foods).Error
 
 	err = p.dbError(err, "E1532861", cafmodel.OrderFood{}, corterm.List)
+
+	return
+}
+
+func (p *OrderFoodRepo) FoodConsumeReport(start, end string) (foodQty []cafmodel.FoodQty, err error) {
+	query := `select cf.name as food, sum(cof.qty) as qty from caf_order_foods cof inner join caf_orders co on cof.order_id = co.id inner join caf_foods cf on cf.id =
+	cof.food_id where co.created_at >= '%v' AND co.created_at <= '%v' group by cf.name order by cf.name;`
+	query = fmt.Sprintf(query, start, end)
+
+	err = p.Engine.DB.Table(cafmodel.OrderTable).Raw(query).Scan(&foodQty).Error
+
+	err = p.dbError(err, "E1576554", cafmodel.OrderFood{}, corterm.List)
 
 	return
 }

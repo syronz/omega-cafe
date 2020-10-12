@@ -1,0 +1,6 @@
+{
+  "method":"get",
+	"url":"_URL_/reports/food-consume?start=2020-10-12%2000:00:00&end=2020-10-12%2023:59:59",
+	"authorization":"Bearer _TOKEN_",
+	"payload": {}
+}

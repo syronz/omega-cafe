@@ -17,6 +17,7 @@ type Food struct {
 	types.GormCol
 	Name        string `gorm:"not null;unique" json:"name,omitempty"`
 	Price       int    `json:"price,omitempty"`
+	Color       string `json:"color,omitempty"`
 	Status      string `json:"status,omitempty"`
 	Description string `json:"description"`
 }
