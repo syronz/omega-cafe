@@ -138,22 +138,21 @@ padding: 2px 4px;
 <div class="invoice">
 <div class="header">
 <div class="logo">
-<h4> Receipt </h4>
+<h3> {{ .companyInfo.name }} </h3>
 </div>
-<p class="alignCenter shopName">{{ .companyInfo.name }}</p>
 <div class="hr"></div>
 <div class="infoContainer">
-<div>
-<p>{{ .order.customer }}</p>
-<p>{{ .order.phone }}</p>
-<p>{{ .order.description }}</p>
-</div>
+  <div>
+  <p>{{ .order.customer }}</p>
+  <p>{{ .order.phone }}</p>
+  <p>{{ .order.description }}</p>
+  </div>
 
-<div class="alignRight">
-<p>#{{ .order.id }}</p>
-<p>{{ .order.created_at }}</p>
-<p>{{ .dict.Agent }} {{ .order.created_by }}</p>
-</div>
+  <div class="alignRight">
+  <p>#{{ .order.id }}</p>
+  <p>{{ .order.created_at }}</p>
+  <p>{{ .dict.Agent }} {{ .order.created_by }}</p>
+  </div>
 </div> <!-- header.infoContainer -->
 <div class="hr"></div>
 </div> <!-- header -->
@@ -190,6 +189,7 @@ padding: 2px 4px;
 {{ .order.total }} 
 </td>
 </tr>
+{{if .order.showDiscount}}
 <tr>
 <td class="subTotal" colspan="3"> {{ .dict.Discount }} </td>
 <td class="subTotal alignRight"> 
@@ -202,6 +202,7 @@ padding: 2px 4px;
 {{  .order.net_total }} 
 </td>
 </tr>
+{{end}}
 </tfoot>
 </table>
 <div class="invoiceDetail" *ngIf="invoice.type == 'sell-serial'">
@@ -217,12 +218,24 @@ padding: 2px 4px;
 </div>
 <div class="hr"></div>
 <div class="thanxPart">
-<p> {{ .dict.ThankYou }} </p>
+<!-- <p> {{ .dict.ThankYou }} </p> -->
 <p> {{ .companyInfo.phone }}</p>
 <p> {{ .companyInfo.address }} </p>
-<p> www.erp14.com </p>
+<p> designed by erp14.com </p>
 </div>
 </div>
 </div>
 </body>
 </html>
+
+<div class="infoContainer">
+  <div>
+  <p></p>
+  </div>
+
+  <div class="alignRight">
+  <p></p>
+  </div>
+</div> <!-- header.infoContainer -->
+<br>
+

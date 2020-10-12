@@ -214,20 +214,21 @@ func (p *OrderAPI) Print(c *gin.Context) {
 
 	data := gin.H{
 		"companyInfo": gin.H{
-			"name":    "footar",
-			"phone":   "07505149171",
-			"address": "slemany",
+			"name":    "یەلاپینۆ",
+			"phone":   "07705631616",
+			"address": "ڕاپەرین مییللی مۆل",
 		},
 		"order": gin.H{
-			"customer":    order.Customer,
-			"phone":       order.Phone,
-			"id":          order.ID,
-			"created_at":  order.CreatedAt.Format(consts.DateTimeLayout),
-			"created_by":  order.CreatedBy,
-			"total":       order.Total,
-			"discount":    order.Discount,
-			"net_total":   order.Total - order.Discount,
-			"description": order.Description,
+			"customer":     order.Customer,
+			"phone":        order.Phone,
+			"id":           order.ID,
+			"created_at":   order.CreatedAt.Format(consts.DateTimeLayout),
+			"created_by":   order.CreatedBy,
+			"total":        order.Total,
+			"discount":     order.Discount,
+			"showDiscount": order.Discount != 0,
+			"net_total":    order.Total - order.Discount,
+			"description":  order.Description,
 		},
 		"foods": order.Foods,
 		"dict": gin.H{
